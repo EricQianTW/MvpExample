@@ -1,10 +1,15 @@
 package com.joker.example.login;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
 
+import com.joker.example.BuildConfig;
 import com.joker.example.R;
 import com.joker.example.base.BaseAppCompatActivity;
 import com.joker.example.utils.ActivityUtils;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.Settings;
 
 /**
  * A login screen that offers login via email/password.

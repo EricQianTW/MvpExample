@@ -1,10 +1,12 @@
 package com.joker.example.login;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.joker.example.bean.UserInfo;
 import com.joker.example.constant.Constant;
 import com.joker.example.utils.GSONUtils;
+import com.orhanobut.logger.Logger;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
@@ -47,6 +49,7 @@ public class LoginPresenter implements LoginContract.Presenter{
                     @Override
                     public void onError(okhttp3.Call call, Exception e) {
                         mLoginView.loginFaild();
+                        Logger.e(e,"something happend");
                     }
 
                     @Override

@@ -1,7 +1,14 @@
 package com.joker.example.base;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import com.joker.example.BuildConfig;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.Settings;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -13,6 +20,18 @@ import java.util.Map;
 public class BaseAppCompatActivity extends AppCompatActivity {
     // 当前class名
     protected String TAG = this.getClass().getName();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Logger.initialize(
+                Settings.getInstance()
+                        .isShowMethodLink(true)
+                        .isShowThreadInfo(false)
+                        .setMethodOffset(0)
+                        .setLogPriority(BuildConfig.DEBUG ? Log.VERBOSE : Log.ASSERT)
+        );
+    }
 
     /**
      * 取得当前Activity的弱引用

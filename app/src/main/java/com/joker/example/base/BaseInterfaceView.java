@@ -16,8 +16,8 @@
 
 package com.joker.example.base;
 
-public interface BasePresenter {
+public interface BaseInterfaceView<T> {
 
-    void start();
+    void setPresenter(T presenter);
 
 }
