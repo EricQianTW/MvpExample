@@ -2,12 +2,13 @@ package com.joker.example.login;
 
 import android.support.annotation.NonNull;
 
-import com.joker.example.utils.IntentUtils;
-import com.joker.example.utils.L;
-import com.joker.example.utils.SPUtils;
-import com.joker.example.utils.T;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Response;
+import com.joker.example.bean.UserInfo;
+import com.joker.example.constant.Constant;
+import com.joker.example.utils.GSONUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
+
+import okhttp3.Response;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -23,34 +24,34 @@ public class LoginPresenter implements LoginContract.Presenter{
         mLoginView.setPresenter(this);
     }
     @Override
-    public void loginTask() {
-        mLoginView.loginSuccess();
+    public void loginTask(String userId,String passwd) {
+        okHttp(userId,passwd);
     }
 
-    public void okHttp() {
-//        OkHttpUtils
-//                .get()
-//                .url(Constant.HTTP_IP)
-//                .addParams("_Interface", "Matan.User_1")
-//                .addParams("_Method", "MBUserLogin")
-//                .addParams("deviceid", "123")
-//                .addParams("loginname", GSONUtils.toJson(account.getText().toString()))
-//                .addParams("password", GSONUtils.toJson(password.getText().toString()))
-//                .build()//
-//                .execute(new Callback<EmployeeInfo>() {
-//                    @Override
-//                    public EmployeeInfo parseNetworkResponse(Response response) throws Exception {
-//                        return GSONUtils.fromJson(response.body().string(), EmployeeInfo.class);
-//                    }
-//
-//                    @Override
-//                    public void onError(Call call, Exception e) {
-//                        showProgress(false, loginProgress, loginForm);
-//                        L.e(TAG, e.toString());
-//                    }
-//
-//                    @Override
-//                    public void onResponse(EmployeeInfo response) {
+    public void okHttp(String userId,String passwd) {
+        OkHttpUtils
+                .get()
+                .url(Constant.HTTP_IP)
+                .addParams("_Interface", "Matan.User_1")
+                .addParams("_Method", "MBUserLogin")
+                .addParams("deviceid", "123")
+                .addParams("loginname", GSONUtils.toJson(userId))
+                .addParams("password", GSONUtils.toJson(passwd))
+                .build()//
+                .execute(new Callback<UserInfo>() {
+                    @Override
+                    public UserInfo parseNetworkResponse(Response response) throws Exception {
+                        return GSONUtils.fromJson(response.body().string(), UserInfo.class);
+                    }
+
+                    @Override
+                    public void onError(okhttp3.Call call, Exception e) {
+                        mLoginView.loginFaild();
+                    }
+
+                    @Override
+                    public void onResponse(UserInfo response) {
+                        mLoginView.loginSuccess();
 //                        showProgress(false, loginProgress, loginForm);
 //                        if(response.getState() == Constant.OKHTTP_RESULT_SUCESS){
 //                            T.showShort(getActivity(), "登录成功");
@@ -62,8 +63,8 @@ public class LoginPresenter implements LoginContract.Presenter{
 //                        }else{
 //                            T.showShort(getActivity(),response.getCustomMessage());
 //                        }
-//                    }
-//                });
+                    }
+                });
     }
 
     @Override

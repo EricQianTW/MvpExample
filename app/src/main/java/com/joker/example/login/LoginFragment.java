@@ -86,7 +86,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         emailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.loginTask();
+                mPresenter.loginTask(email.getText().toString(),password.getText().toString());
             }
         });
     }
@@ -99,5 +99,10 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     @Override
     public void loginSuccess() {
         T.showShort(getActivity(),"成功登陆");
+    }
+
+    @Override
+    public void loginFaild() {
+        T.showShort(getActivity(),"登陆失败");
     }
 }

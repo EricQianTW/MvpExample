@@ -9,9 +9,10 @@ import com.joker.example.base.BaseView;
 public interface LoginContract {
     interface View extends BaseView<Presenter> {
         void loginSuccess();
+        void loginFaild();
     }
 
     interface Presenter extends BasePresenter {
-        void loginTask();
+        void loginTask(String userId,String passwd);
     }
 }

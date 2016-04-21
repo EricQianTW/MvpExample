@@ -39,4 +39,7 @@ dependencies {
     compile "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflowVersion}"
 
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.zhy:okhttputils:2.3.9'
+    compile 'com.github.tianzhijiexian:logger:1.1.7'
 }
