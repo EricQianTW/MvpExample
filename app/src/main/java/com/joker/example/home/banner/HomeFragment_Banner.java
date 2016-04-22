@@ -12,15 +12,9 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.joker.example.R;
 import com.joker.example.base.BaseFragment;
+import com.joker.example.components.convenientbanner.BannerUtils;
 import com.joker.example.components.convenientbanner.NetworkImageHolderView;
 import com.joker.example.utils.T;
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-
-import java.lang.reflect.Field;
 
 import butterknife.ButterKnife;
 
@@ -88,11 +82,11 @@ public class HomeFragment_Banner extends BaseFragment implements HomeContract_Ba
     }
 
     private void init(){
-        initImageLoader();
+        BannerUtils.initImageLoader(getActivity());
 
 //        //本地图片例子
 //        for (int position = 0; position < 7; position++)
-//            localImages.add(getResId("ic_test_" + position, R.drawable.class));
+//            localImages.add(ResourceUtils.getResId("ic_test_" + position, R.drawable.class));
 //        convenientBanner.setPages(
 //                new CBViewHolderCreator<LocalImageHolderView>() {
 //                    @Override
@@ -138,39 +132,6 @@ public class HomeFragment_Banner extends BaseFragment implements HomeContract_Ba
 //                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT)
 //                .setOnItemClickListener(this);
 //        listView.addHeaderView(mConvenientBanner);
-    }
-
-    //初始化网络图片缓存库
-    private void initImageLoader(){
-        //网络图片例子,结合常用的图片缓存库UIL,你可以根据自己需求自己换其他网络图片库
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().
-                showImageForEmptyUri(R.drawable.ic_default_adimage)
-                .cacheInMemory(true).cacheOnDisk(true).build();
-
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-                getActivity()).defaultDisplayImageOptions(defaultOptions)
-                .threadPriority(Thread.NORM_PRIORITY - 2)
-                .denyCacheImageMultipleSizesInMemory()
-                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .tasksProcessingOrder(QueueProcessingType.LIFO).build();
-        ImageLoader.getInstance().init(config);
-    }
-
-    /**
-     * 通过文件名获取资源id 例子：getResId("icon", R.drawable.class);
-     *
-     * @param variableName
-     * @param c
-     * @return
-     */
-    public static int getResId(String variableName, Class<?> c) {
-        try {
-            Field idField = c.getDeclaredField(variableName);
-            return idField.getInt(idField);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
     }
 
     public HomeFragment_Banner(){
