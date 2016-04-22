@@ -3,6 +3,7 @@ package com.joker.example.login;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.joker.example.base.BasePresenter;
 import com.joker.example.bean.UserInfo;
 import com.joker.example.constant.Constant;
 import com.joker.example.utils.GSONUtils;
@@ -17,7 +18,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Created by eric_qiantw on 16/4/20.
  */
-public class LoginPresenter implements LoginContract.Presenter{
+public class LoginPresenter extends BasePresenter implements LoginContract.Presenter{
     private final LoginContract.View mLoginView;
 
     public LoginPresenter(@NonNull LoginContract.View loginView){
@@ -55,17 +56,6 @@ public class LoginPresenter implements LoginContract.Presenter{
                     @Override
                     public void onResponse(UserInfo response) {
                         mLoginView.loginSuccess();
-//                        showProgress(false, loginProgress, loginForm);
-//                        if(response.getState() == Constant.OKHTTP_RESULT_SUCESS){
-//                            T.showShort(getActivity(), "登录成功");
-//                            EmployeeInfo info = new EmployeeInfo();
-//                            response.setLogin(true);
-//                            SPUtils.put(getActivity(), SPUtils.SP_LOGIN_INFO,GSONUtils.toJson(response));
-//
-//                            IntentUtils.startActivityWithFinish(getActivity(), OrderGoodsActivity.class);
-//                        }else{
-//                            T.showShort(getActivity(),response.getCustomMessage());
-//                        }
                     }
                 });
     }
