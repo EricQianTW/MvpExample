@@ -24,6 +24,18 @@
                 android:layout_below="@id/bannerFrame"
                 android:layout_marginTop="10dp"
                 />
+            <FrameLayout
+                android:id="@+id/recommendGoodsFrame"
+                style="@style/match_wrap"
+                android:layout_below="@id/iconFrame"
+                android:layout_marginTop="10dp"
+                />
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bn_home"
+        style="@style/match_wrap"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"/>
 </android.support.design.widget.CoordinatorLayout>

@@ -305,6 +305,11 @@ public abstract class FlexibleDecoration extends RecyclerView.ItemDecoration {
             return (T) this;
         }
 
+        public T showLastDivider(boolean flag) {
+            mShowLastDivider = flag;
+            return (T) this;
+        }
+
         protected void checkBuilderParams() {
             if (mPaintProvider != null) {
                 if (mColorProvider != null) {
