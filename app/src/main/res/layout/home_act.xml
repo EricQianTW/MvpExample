@@ -6,36 +6,52 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/ns_home"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/sf_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/ns_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <FrameLayout
-                android:id="@+id/bannerFrame"
-                style="@style/match_wrap"
-                android:layout_alignParentTop="true"
-                />
-            <FrameLayout
-                android:id="@+id/iconFrame"
-                style="@style/match_wrap"
-                android:layout_below="@id/bannerFrame"
-                android:layout_marginTop="10dp"
-                />
-            <FrameLayout
-                android:id="@+id/recommendGoodsFrame"
-                style="@style/match_wrap"
-                android:layout_below="@id/iconFrame"
-                android:layout_marginTop="10dp"
-                />
-        </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:id="@+id/bannerFrame"
+                    style="@style/match_wrap"
+                    android:layout_alignParentTop="true"
+                    />
+
+                <FrameLayout
+                    android:id="@+id/toolBarFrame"
+                    style="@style/match_wrap"
+                    android:layout_marginTop="-200dp"
+                    android:layout_below="@id/bannerFrame"
+                    />
+
+                <FrameLayout
+                    android:id="@+id/iconFrame"
+                    style="@style/match_wrap"
+                    android:layout_below="@id/bannerFrame"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <FrameLayout
+                    android:id="@+id/recommendGoodsFrame"
+                    style="@style/match_wrap"
+                    android:layout_below="@id/iconFrame"
+                    android:layout_marginTop="10dp"
+                    />
+            </RelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/bn_home"
         style="@style/match_wrap"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"/>
+
 </android.support.design.widget.CoordinatorLayout>

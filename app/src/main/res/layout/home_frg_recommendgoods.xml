@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_wrap"
+    android:background="@color/white">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_icon"
+        style="@style/match_wrap">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

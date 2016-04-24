@@ -11,4 +11,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="sweep">扫一扫</string>
+    <string name="search_hint">输入关键字搜索</string>
+    <string name="message">消息</string>
 </resources>

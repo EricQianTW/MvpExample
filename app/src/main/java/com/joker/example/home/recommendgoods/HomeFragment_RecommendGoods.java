@@ -37,7 +37,7 @@ public class HomeFragment_RecommendGoods extends BaseFragment implements HomeCon
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_frg_icon, container, false);
+        View view = inflater.inflate(R.layout.home_frg_recommendgoods, container, false);
         ButterKnife.bind(this, view);
 
         try {
